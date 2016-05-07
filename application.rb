@@ -4,14 +4,14 @@ require_relative 'db/models'
 require_relative 'app/controllers/init'
 require 'tilt/haml'
 
-class TwitchStreamVoteDatabase < Sintra::Base
+class TwitchStreamVoteDatabase < Sinatra::Base
   register Sinatra::ActiveRecordExtension
-  use Rack:MethodOverrid
+  use Rack::MethodOverride
   set :database, adapter: 'sqlite3', database: 'data.sqlite3'
   set :server, 'thin'
-  
-end
 
-get '/' do
-  haml :index
+  get '/' do
+    haml :index
+  end
+
 end
