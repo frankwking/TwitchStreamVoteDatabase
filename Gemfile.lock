@@ -69,6 +69,7 @@ PLATFORMS
 DEPENDENCIES
   haml
   json
+  rack
   rake
   sinatra
   sinatra-activerecord

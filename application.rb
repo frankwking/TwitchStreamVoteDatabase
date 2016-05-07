@@ -9,6 +9,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   use Rack::MethodOverride
   set :database, adapter: 'sqlite3', database: 'data.sqlite3'
   set :server, 'thin'
+  set :views, File.dirname(__FILE__) + "/views"
 
   get '/' do
     haml :index
