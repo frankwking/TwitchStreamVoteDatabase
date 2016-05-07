@@ -6,7 +6,18 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     haml :game_show
   end
 
-  get '/new_game/:name/?' do
-    
+  get '/new_game/?' do
+    haml :new_game
+  end
+
+  post '/new_game/?' do
+    Game.create(params)
+
+    haml :game_index
+  end
+
+  get '/games/?' do
+    @games = Game.all
+    haml :game_index
   end
 end

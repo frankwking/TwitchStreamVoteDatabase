@@ -1,0 +1,15 @@
+-# code: 'UTF-8'
+
+%head
+  %title Twitch Stream Vote Database
+%body
+  %h2 Create New Game Entry
+  %form{action: '/new_game', method: 'post'}
+    %ul
+      %li
+        %input{placeholder: 'Game Name', type: 'text', name: 'name'}
+      %li
+        %input{placeholder: 'Release Year', type: 'number', name: 'year'}
+      %li
+        %input{placeholder: 'Starting Votes', type: 'number', name: 'votes'}
+    %input{type: 'submit'}
