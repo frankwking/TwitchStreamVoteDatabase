@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'sinatra-activerecord'
+gem 'sinatra-contrib'
+gem 'sinatra-websocket'
+gem 'json'
+gem 'haml'
+gem 'sqlite3'
+gem 'rake'
