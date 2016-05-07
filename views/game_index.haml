@@ -7,5 +7,7 @@
   %ul
     - @games.each do |g|
       %li
-        %div #{g.name}, Year: #{g.year}, Current Votes: #{g.votes}
+        %div
+          %a{href: "/game/#{g.id}"} #{g.name}
+          %span, Year: #{g.year}, Current Votes: #{g.votes}
   %a{href: "/new_game/"} Add a New Game

@@ -2,6 +2,7 @@
 
 %body
   %div
-    %h1 = @game.name
-    %h2 = 'Year: ' + @game.year
-    %h1 = 'Current Votes: ' + @game.votes
+    %h1= @game.name
+    %h2= 'Year: ' + @game.year.to_s
+    %h1= 'Current Votes: ' + @game.votes.to_s
+  %a{href: "/games/"} Back to Game Index
