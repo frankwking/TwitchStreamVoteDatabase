@@ -5,4 +5,8 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     @game = Game.find params[:id]
     haml :game_show
   end
+
+  get '/new_game/:name/?' do
+    
+  end
 end

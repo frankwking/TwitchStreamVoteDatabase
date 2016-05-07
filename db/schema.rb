@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507162408) do
+ActiveRecord::Schema.define(version: 20160507173006) do
 
   create_table "game_queues", force: :cascade do |t|
-    t.string   "names"
+    t.string   "name"
     t.datetime "created_at"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.integer  "votes"
+    t.integer  "year"
   end
 
 end
