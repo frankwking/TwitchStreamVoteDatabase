@@ -1,6 +1,11 @@
 require 'sinatra/base'
+require 'sinatra/reloader'
 
 class TwitchStreamVoteDatabase < Sinatra::Base
+  configure :development do
+    register Sinatra::Reloader
+  end
+
   get '/game/:id/?' do
     @game = Game.find params[:id]
     haml :game_show
