@@ -13,6 +13,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   post '/new_game/?' do
     Game.create(params)
 
+    @games = Game.all
     haml :game_index
   end
 
