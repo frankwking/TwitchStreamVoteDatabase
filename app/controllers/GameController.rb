@@ -11,6 +11,13 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     haml :game_show
   end
 
+  delete '/game/:id/?' do
+    Game.find(params[:id]).destroy
+
+    @games = Game.all
+    haml :game_index
+  end
+
   get '/new_game/?' do
     haml :new_game
   end
