@@ -1,0 +1,12 @@
+-# code: 'UTF-8'
+
+%head
+  %title Twitch Stream Vote Database
+%body
+  %h2 List of Game Queues
+  %ul
+    - @gameQueue.each do |g|
+      %li
+        %div
+          %a{href: "/game_queue/#{g.id}"} #{g.name}
+  %a{href: "/new_game_queue/"} Add a New Game Queue
