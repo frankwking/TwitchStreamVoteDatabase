@@ -15,4 +15,15 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     @gameQueue = GameQueue.all
     haml :game_queue_index
   end
+
+  get '/new_game_queue/?' do
+    haml :new_game_queue
+  end
+
+  post '/new_game_queue/?' do
+    GameQueue.create(params)
+
+    @gameQueue = GameQueue.all
+    haml :game_queue_index
+  end
 end
