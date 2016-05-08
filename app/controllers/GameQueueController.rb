@@ -14,6 +14,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   delete '/game_queue/:id/?' do
     gameQueue = GameQueue.find params[:id]
     gameQueue.destroy
+
     redirect '/game_queues/'
   end
 
@@ -29,7 +30,6 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   post '/new_game_queue/?' do
     GameQueue.create(params)
 
-    @gameQueue = GameQueue.all
-    haml :game_queue_index
+    redirect '/game_queues/'
   end
 end
