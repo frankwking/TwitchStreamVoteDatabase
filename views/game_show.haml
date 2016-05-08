@@ -5,4 +5,7 @@
     %h1= @game.name
     %h2= 'Year: ' + @game.year.to_s
     %h1= 'Current Votes: ' + @game.votes.to_s
+    %form{action: "/game/#{@game.id}", method: "post"}
+      %input{type: 'hidden', name: '_method', value: 'delete'}
+      %input{type: 'submit', value: 'Delete Game'}
   %a{href: "/games/"} Back to Game Index
