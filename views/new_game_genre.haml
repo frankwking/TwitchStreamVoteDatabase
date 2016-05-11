@@ -1,0 +1,11 @@
+-# code: 'UTF-8'
+
+%head
+  %title Twitch Stream Vote Database
+%body
+  %h2 Create New Game Genre Entry
+  %form{action: '/new_game_genre', method: 'post'}
+    %ul
+      %li
+        %input{placeholder: 'Game Genre Name', type: 'text', name: 'name'}
+    %input{type: 'submit'}
