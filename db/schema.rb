@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511195542) do
+ActiveRecord::Schema.define(version: 20160511202047) do
 
   create_table "game_consoles", force: :cascade do |t|
     t.string   "name"
@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 20160511195542) do
   end
 
   create_table "game_consoles_games", id: false, force: :cascade do |t|
-    t.integer  "game_consoles_id"
-    t.integer  "games_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "game_console_id"
+    t.integer  "game_id"
   end
 
-  add_index "game_consoles_games", ["game_consoles_id"], name: "index_game_consoles_games_on_game_consoles_id"
-  add_index "game_consoles_games", ["games_id"], name: "index_game_consoles_games_on_games_id"
+  add_index "game_consoles_games", ["game_console_id"], name: "index_game_consoles_games_on_game_console_id"
+  add_index "game_consoles_games", ["game_id"], name: "index_game_consoles_games_on_game_id"
 
   create_table "game_genres", force: :cascade do |t|
     t.string   "name"
@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 20160511195542) do
   end
 
   create_table "game_genres_games", id: false, force: :cascade do |t|
-    t.integer  "game_genres_id"
-    t.integer  "games_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "game_genre_id"
+    t.integer  "game_id"
   end
 
-  add_index "game_genres_games", ["game_genres_id"], name: "index_game_genres_games_on_game_genres_id"
-  add_index "game_genres_games", ["games_id"], name: "index_game_genres_games_on_games_id"
+  add_index "game_genres_games", ["game_genre_id"], name: "index_game_genres_games_on_game_genre_id"
+  add_index "game_genres_games", ["game_id"], name: "index_game_genres_games_on_game_id"
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
