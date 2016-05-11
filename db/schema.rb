@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511185725) do
+ActiveRecord::Schema.define(version: 20160511190155) do
 
   create_table "game_consoles", force: :cascade do |t|
     t.string   "name"
@@ -47,8 +47,15 @@ ActiveRecord::Schema.define(version: 20160511185725) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "current_votes"
+    t.integer  "game_progress"
+    t.integer  "game_queue"
+    t.integer  "hours_to_beat"
+    t.string   "vote_command"
+    t.string   "vote_file_name"
+    t.boolean  "is_blind_playthrough"
   end
 
   create_table "vote_records", force: :cascade do |t|
