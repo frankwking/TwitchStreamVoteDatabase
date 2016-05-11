@@ -1,0 +1,11 @@
+-# code: 'UTF-8'
+
+%head
+  %title Twitch Stream Vote Database
+%body
+  %div
+    %h1= @gameGenre.name
+    %form{action: "/game_genres/#{@gameGenre.id}", method: "post"}
+      %input{type: 'hidden', name: '_method', value: 'delete'}
+      %input{type: 'submit', value: 'Delete Game Genre'}
+  %a{href: "/game_genres/"} Back to Game Genre Index
