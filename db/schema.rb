@@ -11,12 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511010226) do
+ActiveRecord::Schema.define(version: 20160511011654) do
+
+  create_table "game", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "game_console", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "game_consoles_games", id: false, force: :cascade do |t|
+    t.integer  "game_consoles_id"
+    t.integer  "games_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "game_consoles_games", ["game_consoles_id"], name: "index_game_consoles_games_on_game_consoles_id"
+  add_index "game_consoles_games", ["games_id"], name: "index_game_consoles_games_on_games_id"
+
+  create_table "game_genre", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_genres_games", id: false, force: :cascade do |t|
+    t.integer  "game_genres_id"
+    t.integer  "games_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "game_genres_games", ["game_genres_id"], name: "index_game_genres_games_on_game_genres_id"
+  add_index "game_genres_games", ["games_id"], name: "index_game_genres_games_on_games_id"
+
+  create_table "vote_records", force: :cascade do |t|
+    t.integer  "game_id"
+    t.datetime "vote_record_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "vote_records", ["game_id"], name: "index_vote_records_on_game_id"
 
 end
