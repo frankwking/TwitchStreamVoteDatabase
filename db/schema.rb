@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511190155) do
+ActiveRecord::Schema.define(version: 20160511191004) do
 
   create_table "game_consoles", force: :cascade do |t|
     t.string   "name"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20160511190155) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "current_votes"
     t.integer  "game_progress"
     t.integer  "game_queue"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 20160511190155) do
     t.string   "vote_command"
     t.string   "vote_file_name"
     t.boolean  "is_blind_playthrough"
+    t.string   "wikipedia_link"
+    t.string   "metacritic_link"
+    t.string   "how_long_to_beat_link"
+    t.string   "youtube_playlist_link"
   end
 
   create_table "vote_records", force: :cascade do |t|
@@ -63,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160511190155) do
     t.datetime "vote_record_date"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "vote_total"
   end
 
   add_index "vote_records", ["game_id"], name: "index_vote_records_on_game_id"
