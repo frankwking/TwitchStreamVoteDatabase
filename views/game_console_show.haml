@@ -7,7 +7,7 @@
     %h1= @gameConsole.name
     %h2 Games on this Console
     - @game.each do |g|
-      %div #{g.name}
+      %a{href: "/games/#{g.id}"} #{g.name}
     %form{action: "/game_consoles/#{@gameConsole.id}", method: "post"}
       %input{type: 'hidden', name: '_method', value: 'delete'}
       %input{type: 'submit', value: 'Delete Game Console'}
