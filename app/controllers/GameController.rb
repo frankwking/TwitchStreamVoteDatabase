@@ -6,12 +6,12 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  get '/game/:id/?' do
+  get '/games/:id/?' do
     @game = Game.find params[:id]
     haml :game_show
   end
 
-  delete '/game/:id/?' do
+  delete '/games/:id/?' do
     game = Game.find params[:id]
     game.destroy
 
@@ -24,6 +24,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/new_game/?' do
+    @gameConsoles = GameConsole.all
     haml :new_game
   end
 
