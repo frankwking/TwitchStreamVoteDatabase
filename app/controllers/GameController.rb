@@ -29,7 +29,10 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   post '/new_game/?' do
-    Game.create(params)
+    game_console_id = params[:game_console_id]
+    params.delete 'game_console_id'
+    game = Game.create(params)
+    game.game_consoles << GameConsole.find(game_console_id)
 
     redirect '/games/'
   end
