@@ -5,7 +5,7 @@
     %h1= @game.name
     %h2= 'Game consoles:'
     - @game.game_consoles.each do |g|
-      %div #{g.name}
+      %a{href: "/game_consoles/#{g.id}"} #{g.name}
     %form{action: "/games/#{@game.id}/add_console", method: "post"}
       %select{name: 'game_console_id', label: " "}
         %option{value: "no_console", disabled: "disabled", selected: "selected"} Select Game Console
@@ -16,3 +16,5 @@
       %input{type: 'hidden', name: '_method', value: 'delete'}
       %input{type: 'submit', value: 'Delete Game'}
   %a{href: "/games/"} Back to Game Index
+  %div
+    %a{href: "/"} Back to Main Page
