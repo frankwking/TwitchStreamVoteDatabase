@@ -8,6 +8,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
   get '/games/:id/?' do
     @game = Game.find params[:id]
+    @gameConsoles = GameConsole.all
     haml :game_show
   end
 
@@ -35,5 +36,10 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     game.game_consoles << GameConsole.find(game_console_id)
 
     redirect '/games/'
+  end
+
+  post '/games/:id/add_console/?' do
+    Game.find(params[:id]).game_consoles << GameConsole.find(params[:game_console_id])
+    redirect '/games/' + params[:id] + '/'
   end
 end
