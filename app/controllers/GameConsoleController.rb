@@ -8,6 +8,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
   get '/game_consoles/:id/?' do
     @gameConsole = GameConsole.find params[:id]
+    @game = @gameConsole.games
     haml :game_console_show
   end
 
