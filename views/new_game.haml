@@ -4,19 +4,16 @@
   %title Twitch Stream Vote Database
 %body
   %h2 Create New Game Entry
-  %ul
-    - @gameConsoles.each do |g|
-      %li
-        %div
-          %a{href: "/game_consoles/#{g.id}"} #{g.name}
   %form{action: '/new_game', method: 'post'}
     %ul
       %li
         %input{placeholder: 'Game Name', type: 'text', name: 'name'}
-      -# %li
-      -#   %input{placeholder: 'Release Year', type: 'number', name: 'year'}
-      -# %li
-      -#   %input{placeholder: 'Starting Votes', type: 'number', name: 'votes'}
+      %li
+        %span Game Console:
+        %select{name: 'game_console_id', label: " "}
+          %option{value: "no_console", disabled: "disabled", selected: "selected"} Select Game Console
+          - @gameConsoles.each do |g|
+            %option{value: "#{g.id}"} #{g.name}
     %input{type: 'submit'}
     %div
       %a{href: "/games/"} Back to Games
