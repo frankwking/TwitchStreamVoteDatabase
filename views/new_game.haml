@@ -4,6 +4,11 @@
   %title Twitch Stream Vote Database
 %body
   %h2 Create New Game Entry
+  %ul
+    - @gameConsoles.each do |g|
+      %li
+        %div
+          %a{href: "/game_consoles/#{g.id}"} #{g.name}
   %form{action: '/new_game', method: 'post'}
     %ul
       %li
@@ -13,3 +18,7 @@
       -# %li
       -#   %input{placeholder: 'Starting Votes', type: 'number', name: 'votes'}
     %input{type: 'submit'}
+    %div
+      %a{href: "/games/"} Back to Games
+    %div
+      %a{href: "/"} Back to Main Page
