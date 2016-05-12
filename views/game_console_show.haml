@@ -1,0 +1,16 @@
+-# code: 'UTF-8'
+
+%head
+  %title Twitch Stream Vote Database
+%body
+  %div
+    %h1= @gameConsole.name
+    %h2 Games on this Console
+    - @game.each do |g|
+      %a{href: "/games/#{g.id}"} #{g.name}
+    %form{action: "/game_consoles/#{@gameConsole.id}", method: "post"}
+      %input{type: 'hidden', name: '_method', value: 'delete'}
+      %input{type: 'submit', value: 'Delete Game Console'}
+  %a{href: "/game_consoles/"} Back to Game Console Index
+  %div
+    %a{href: "/"} Back to Main Page

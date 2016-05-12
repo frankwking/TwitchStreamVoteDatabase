@@ -1,0 +1,14 @@
+-# code: 'UTF-8'
+
+%head
+  %title Twitch Stream Vote Database
+%body
+  %h2 List of all Game Genres
+  %ul
+    - @gameGenre.each do |g|
+      %li
+        %div
+          %a{href: "/game_genres/#{g.id}"} #{g.name}
+  %a{href: "/new_game_genre/"} Add a New Game Genre
+  %div
+    %a{href: "/"} Back to Main Page

@@ -1,0 +1,14 @@
+-# code: 'UTF-8'
+
+%head
+  %title Twitch Stream Vote Database
+%body
+  %h2 List of all Game Consoles
+  %ul
+    - @gameConsole.each do |g|
+      %li
+        %div
+          %a{href: "/game_consoles/#{g.id}"} #{g.name}
+  %a{href: "/new_game_console/"} Add a New Game Console
+  %div
+    %a{href: "/"} Back to Main Page

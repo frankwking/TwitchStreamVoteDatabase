@@ -11,18 +11,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507173006) do
+ActiveRecord::Schema.define(version: 20160511202047) do
 
-  create_table "game_queues", force: :cascade do |t|
+  create_table "game_consoles", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  create_table "game_consoles_games", id: false, force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "game_console_id"
+    t.integer  "game_id"
+  end
+
+  add_index "game_consoles_games", ["game_console_id"], name: "index_game_consoles_games_on_game_console_id"
+  add_index "game_consoles_games", ["game_id"], name: "index_game_consoles_games_on_game_id"
+
+  create_table "game_genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_genres_games", id: false, force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "game_genre_id"
+    t.integer  "game_id"
+  end
+
+  add_index "game_genres_games", ["game_genre_id"], name: "index_game_genres_games_on_game_genre_id"
+  add_index "game_genres_games", ["game_id"], name: "index_game_genres_games_on_game_id"
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.integer  "votes"
-    t.integer  "year"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "current_votes"
+    t.integer  "game_progress"
+    t.integer  "game_queue"
+    t.integer  "hours_to_beat"
+    t.string   "vote_command"
+    t.string   "vote_file_name"
+    t.boolean  "is_blind_playthrough"
+    t.string   "wikipedia_link"
+    t.string   "metacritic_link"
+    t.string   "how_long_to_beat_link"
+    t.string   "youtube_playlist_link"
   end
+
+  create_table "vote_records", force: :cascade do |t|
+    t.datetime "vote_record_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "vote_total"
+    t.integer  "games_id"
+  end
+
+  add_index "vote_records", ["games_id"], name: "index_vote_records_on_games_id"
 
 end

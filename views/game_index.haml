@@ -8,6 +8,8 @@
     - @games.each do |g|
       %li
         %div
-          %a{href: "/game/#{g.id}"} #{g.name}
-          %span, Year: #{g.year}, Current Votes: #{g.votes}
+          %a{href: "/games/#{g.id}"} #{g.name}
+          -# %span, Year: #{g.year}, Current Votes: #{g.votes}
   %a{href: "/new_game/"} Add a New Game
+  %div
+    %a{href: "/"} Back to Main Page
