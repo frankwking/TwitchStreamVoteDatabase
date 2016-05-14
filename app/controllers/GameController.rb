@@ -48,4 +48,11 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     redirect '/games/' + params[:id] + '/'
   end
 
+  post '/games/:id/change_vote/?' do
+    game = Game.find(params[:id])
+    game.current_votes = params[:current_votes]
+    game.save
+    redirect '/games/' + params[:id] + '/'
+  end
+
 end
