@@ -11,12 +11,17 @@
           %input{type: 'hidden', name: 'game_console_id', value: "#{g.id}"}
           %input{type: 'hidden', name: '_method', value: 'delete'}
           %input{type: 'submit', value: 'Remove Console'}
+    %h2= 'Current Votes: ' + @game.current_votes.to_s
     %form{action: "/games/#{@game.id}/change_console", method: "post"}
       %select{name: 'game_console_id', label: " "}
         %option{value: "no_console", disabled: "disabled", selected: "selected"} Select Game Console
         - @gameConsoles.each do |g|
           %option{value: "#{g.id}"} #{g.name}
       %input{type: 'submit', value: 'Add Game Console'}
+    %form{action: "/games/#{@game.id}/change_vote", method: "post"}
+      %label{for: "current_votes"} Update Vote Total:
+      %input{type: "number", name: "current_votes", min: "0"}
+      %input{type: 'submit', value: 'Update'}
     %form{action: "/games/#{@game.id}", method: "post"}
       %input{type: 'hidden', name: '_method', value: 'delete'}
       %input{type: 'submit', value: 'Delete Game'}
