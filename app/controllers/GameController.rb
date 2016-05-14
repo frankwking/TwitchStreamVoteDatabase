@@ -9,6 +9,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   get '/games/:id/?' do
     @game = Game.find params[:id]
     @gameConsoles = GameConsole.all
+    @current_votes = @game.current_votes.to_s
     haml :game_show
   end
 
