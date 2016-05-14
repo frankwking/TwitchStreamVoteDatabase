@@ -14,6 +14,9 @@
           %option{value: "no_console", disabled: "disabled", selected: "selected"} Select Game Console
           - @gameConsoles.each do |g|
             %option{value: "#{g.id}"} #{g.name}
+      %li
+        %label{for: "current_votes"} Current Votes:
+        %input{type: "number", name: "current_votes", min: "0"} 
     %input{type: 'submit'}
     %div
       %a{href: "/games/"} Back to Games
