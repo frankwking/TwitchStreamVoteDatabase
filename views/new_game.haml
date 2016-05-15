@@ -15,6 +15,12 @@
           - @gameConsoles.each do |g|
             %option{value: "#{g.id}"} #{g.name}
       %li
+        %span Game Genre:
+        %select{name: 'game_genre_id', label: " "}
+          %option{value: "no_genre", disabled: "disabled", selected: "selected"} Select Game Genre
+          - @gameGenres.each do |g|
+            %option{value: "#{g.id}"} #{g.name}
+      %li
         %label{for: "current_votes"} Current Votes:
         %input{type: "number", name: "current_votes", min: "0"} 
     %input{type: 'submit'}
