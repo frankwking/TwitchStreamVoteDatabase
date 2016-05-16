@@ -37,7 +37,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   delete '/game_genres/:id/change_game/?' do
     GameGenre.find(params[:id]).games.destroy(Game.find(params[:game_id]))
 
-    redirect '/game_genres/'
+    redirect '/game_genres/' + params[:id] +'/'
   end
-    
+
 end
