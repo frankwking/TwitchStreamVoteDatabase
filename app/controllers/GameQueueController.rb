@@ -8,7 +8,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
   get '/game_queues/:id/?' do
     @gameQueue = GameQueue.find params[:id]
-    @games = @gameQueue.games
+    @games = @gameQueue.games.order('current_votes desc')
     @gameQueues = GameQueue.all
     haml :game_queue_show
   end
