@@ -29,6 +29,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   get '/new_game/?' do
     @gameConsoles = GameConsole.all
     @gameGenres = GameGenre.all
+    @gameQueues = GameQueue.all
     haml :new_game
   end
 
