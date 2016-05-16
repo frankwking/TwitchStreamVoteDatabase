@@ -4,6 +4,13 @@
   %div
     %h1= @game.name
     %div
+      %h2= 'Game Queue: ' + @current_queue
+      %form{action: "/games/#{@game.id}/change_queue", method: "post"}
+        %select{name: 'game_queue_id', label: " "}
+          - @gameQueues.each do |g|
+            %option{value: "#{g.id}"} #{g.name}
+        %input{type: 'submit', value: 'Change Game Queue'}
+    %div
       %h2= 'Game consoles:'
       - @game.game_consoles.each do |g|
         %div
