@@ -10,8 +10,10 @@
         %a{href: "/games/#{g.id}"} #{g.name}
         %form{action: "/game_queues/#{@gameQueue.id}/change_game", method: "post"}
           %input{type: 'hidden', name: 'game_id', value: "#{g.id}"}
-          %input{type: 'hidden', name: '_method', value: 'delete'}
-          %input{type: 'submit', value: 'Remove Game'}
+          %select{name: 'game_queue_id', label: " "}
+            - @gameQueues.each do |gq|
+              %option{value: "#{gq.id}"} #{gq.name}
+          %input{type: 'submit', value: 'Change Game Queue'}
   %a{href: "/game_queues/"} Back to Game Queue Index
   %div
     %a{href: "/"} Back to Main Page
