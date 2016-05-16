@@ -11,13 +11,27 @@
           %input{type: 'hidden', name: 'game_console_id', value: "#{g.id}"}
           %input{type: 'hidden', name: '_method', value: 'delete'}
           %input{type: 'submit', value: 'Remove Console'}
-    %h2= 'Current Votes: ' + @current_votes unless @current_votes.empty?  
     %form{action: "/games/#{@game.id}/change_console", method: "post"}
       %select{name: 'game_console_id', label: " "}
         %option{value: "no_console", disabled: "disabled", selected: "selected"} Select Game Console
         - @gameConsoles.each do |g|
           %option{value: "#{g.id}"} #{g.name}
       %input{type: 'submit', value: 'Add Game Console'}
+    %h2= 'Game genres:'
+    - @game.game_genres.each do |g|
+      %div
+        %a{href: "/game_genres/#{g.id}"} #{g.name}
+        %form{action: "/games/#{@game.id}/change_genre", method: "post"}
+          %input{type: 'hidden', name: 'game_genre_id', value: "#{g.id}"}
+          %input{type: 'hidden', name: '_method', value: 'delete'}
+          %input{type: 'submit', value: 'Remove Genre'}
+    %form{action: "/games/#{@game.id}/change_genre", method: "post"}
+      %select{name: 'game_genre_id', label: " "}
+        %option{value: "no_genre", disabled: "disabled", selected: "selected"} Select Game Genre
+        - @gameGenres.each do |g|
+          %option{value: "#{g.id}"} #{g.name}
+      %input{type: 'submit', value: 'Add Game Genre'}
+    %h2= 'Current Votes: ' + @current_votes unless @current_votes.empty?  
     %form{action: "/games/#{@game.id}/change_vote", method: "post"}
       %label{for: "current_votes"} Update Vote Total:
       %input{type: "number", name: "current_votes", min: "0"}

@@ -5,6 +5,13 @@
 %body
   %div
     %h1= @gameGenre.name
+    %h2 Games in this Genre
+    - @game.each do |g|
+      %a{href: "/games/#{g.id}"} #{g.name}
+      %form{action: "/game_genres/#{@gameGenre.id}/change_game", method: "post"}
+        %input{type: 'hidden', name: 'game_id', value: "#{g.id}"}
+        %input{type: 'hidden', name: '_method', value: 'delete'}
+        %input{type: 'submit', value: 'Remove Game'}
     %form{action: "/game_genres/#{@gameGenre.id}", method: "post"}
       %input{type: 'hidden', name: '_method', value: 'delete'}
       %input{type: 'submit', value: 'Delete Game Genre'}
