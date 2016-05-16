@@ -4,7 +4,8 @@
   %div
     %h1= @game.name
     %div
-      %h2= 'Game Queue: ' + @current_queue
+      %h2= 'Game Queue: '
+      %a{href: "/game_queues/#{@current_queue_id}"} #{@current_queue_name}
       %form{action: "/games/#{@game.id}/change_queue", method: "post"}
         %select{name: 'game_queue_id', label: " "}
           - @gameQueues.each do |g|
