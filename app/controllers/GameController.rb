@@ -8,9 +8,14 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
   get '/games/:id/?' do
     @game = Game.find params[:id]
+
+    @current_queue = @game.game_queue.name
+    @current_votes = @game.current_votes.to_s
+
     @gameConsoles = GameConsole.all
     @gameGenres = GameGenre.all
-    @current_votes = @game.current_votes.to_s
+    @gameQueues = GameQueue.all
+
     haml :game_show
   end
 
@@ -67,6 +72,17 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   post '/games/:id/change_vote/?' do
     game = Game.find(params[:id])
     game.current_votes = params[:current_votes]
+    game.save
+    redirect '/games/' + params[:id] + '/'
+  end
+
+  post '/games/:id/change_queue/?' do
+    game = Game.find(params[:id])
+    puts '---------------------------'
+    puts game
+    puts game.game_queue
+    puts GameQueue.find(params[:game_queue_id])
+    game.game_queue = GameQueue.find(params[:game_queue_id])
     game.save
     redirect '/games/' + params[:id] + '/'
   end
