@@ -33,4 +33,10 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
     redirect '/game_consoles/'
   end
+
+  delete '/game_consoles/:id/change_game/?' do
+    GameConsole.find(params[:id]).games.destroy(Game.find(params[:game_id]))
+
+    redirect '/game_consoles/' + params[:id] +'/'
+  end
 end
