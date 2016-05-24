@@ -14,7 +14,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/game_queues/?' do
-    @gameQueue = GameQueue.all.order('name asc')
+    @gameQueue = GameQueue.where(display: true).order('name asc')
     haml :game_queue_index
   end
 
