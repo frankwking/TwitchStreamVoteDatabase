@@ -7,13 +7,13 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/game_genres/:id/?' do
-    @gameGenre = GameGenre.find params[:id]
+    @gameGenre = GameGenre.find(params[:id])
     @game = @gameGenre.games
     haml :game_genre_show
   end
 
   delete '/game_genres/:id/?' do
-    gameGenre = GameGenre.find params[:id]
+    gameGenre = GameGenre.find(params[:id])
     gameGenre.destroy
 
     redirect '/game_genres/'
