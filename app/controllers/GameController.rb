@@ -40,13 +40,12 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   post '/new_game/?' do
-    game_console_id = params[:game_console_id]
-    params.delete 'game_console_id'
-    game_genre_id = params[:game_genre_id]
-    params.delete 'game_genre_id'
-    game = Game.create(params)
-    game.game_consoles << GameConsole.find(game_console_id)
-    game.game_genres << GameGenre.find(game_genre_id)
+    game = Game.create(name: params[:name])
+    game.game_queue = GameQueue.find(params[:game_queue_id])
+    game.game_consoles << GameConsole.find(params[:game_console_id])
+    game.game_genres << GameGenre.find(params[:game_genre_id])
+    game.current_votes = params[:current_votes]
+    game.save
     redirect '/games/'
   end
 
