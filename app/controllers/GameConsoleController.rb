@@ -7,13 +7,13 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/game_consoles/:id/?' do
-    @gameConsole = GameConsole.find params[:id]
+    @gameConsole = GameConsole.find(params[:id])
     @game = @gameConsole.games
     haml :game_console_show
   end
 
   delete '/game_consoles/:id/?' do
-    gameConsole = GameConsole.find params[:id]
+    gameConsole = GameConsole.find(params[:id])
     gameConsole.destroy
 
     redirect '/game_consoles/'
