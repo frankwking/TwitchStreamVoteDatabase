@@ -1,0 +1,5 @@
+require_relative  'Game'
+require_relative  'GameConsole'
+require_relative  'GameGenre'
+require_relative  'GameQueue'
+require_relative  'VoteRecord'
