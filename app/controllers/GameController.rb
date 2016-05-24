@@ -7,7 +7,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/games/:id/?' do
-    @game = Game.find params[:id]
+    @game = Game.find(params[:id])
 
     @current_queue_name = @game.game_queue.name
     @current_queue_id =@game.game_queue.id
@@ -21,7 +21,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   delete '/games/:id/?' do
-    game = Game.find params[:id]
+    game = Game.find(params[:id])
     game.destroy
 
     redirect '/games/'
