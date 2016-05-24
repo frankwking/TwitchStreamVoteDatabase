@@ -23,6 +23,6 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     gameQueue.games << Game.find(params[:game_id])
     gameQueue.save
 
-    redirect '/game_queues/' + params[:id] +'/'
+    redirect "/game_queues/#{params[:id]}/"
   end
 end

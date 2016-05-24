@@ -52,36 +52,36 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
   post '/games/:id/change_console/?' do
     Game.find(params[:id]).game_consoles << GameConsole.find(params[:game_console_id])
-    redirect '/games/' + params[:id] + '/'
+    redirect "/games/#{params[:id]}/"
   end
 
   delete '/games/:id/change_console/?' do
     Game.find(params[:id]).game_consoles.destroy(GameConsole.find(params[:game_console_id]))
-    redirect '/games/' + params[:id] + '/'
+    redirect "/games/#{params[:id]}/"
   end
 
   post '/games/:id/change_genre/?' do
     Game.find(params[:id]).game_genres << GameGenre.find(params[:game_genre_id])
-    redirect '/games/' + params[:id] + '/'
+    redirect "/games/#{params[:id]}/"
   end
 
   delete '/games/:id/change_genre/?' do
     Game.find(params[:id]).game_genres.destroy(GameGenre.find(params[:game_genre_id]))
-    redirect '/games/' + params[:id] + '/'
+    redirect "/games/#{params[:id]}/"
   end
 
   post '/games/:id/change_vote/?' do
     game = Game.find(params[:id])
     game.current_votes = params[:current_votes]
     game.save
-    redirect '/games/' + params[:id] + '/'
+    redirect "/games/#{params[:id]}/"
   end
 
   post '/games/:id/change_queue/?' do
     game = Game.find(params[:id])
     game.game_queue = GameQueue.find(params[:game_queue_id])
     game.save
-    redirect '/games/' + params[:id] + '/'
+    redirect "/games/#{params[:id]}/"
   end
 
 end
