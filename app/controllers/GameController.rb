@@ -13,9 +13,9 @@ class TwitchStreamVoteDatabase < Sinatra::Base
     @current_queue_id =@game.game_queue.id
     @current_votes = @game.current_votes.to_s
 
-    @gameConsoles = GameConsole.all
-    @gameGenres = GameGenre.all
-    @gameQueues = GameQueue.all
+    @gameConsoles = GameConsole.all.order('name asc')
+    @gameGenres = GameGenre.all.order('name asc')
+    @gameQueues = GameQueue.all.order('name asc')
 
     haml :game_show
   end
@@ -33,9 +33,9 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/new_game/?' do
-    @gameConsoles = GameConsole.all
-    @gameGenres = GameGenre.all
-    @gameQueues = GameQueue.all
+    @gameConsoles = GameConsole.all.order('name asc')
+    @gameGenres = GameGenre.all.order('name asc')
+    @gameQueues = GameQueue.all.order('name asc')
     haml :new_game
   end
 

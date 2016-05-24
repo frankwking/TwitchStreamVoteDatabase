@@ -8,7 +8,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
   get '/game_consoles/:id/?' do
     @gameConsole = GameConsole.find(params[:id])
-    @game = @gameConsole.games
+    @game = @gameConsole.games.order('name asc')
     haml :game_console_show
   end
 
@@ -20,7 +20,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/game_consoles/?' do
-    @gameConsole = GameConsole.all
+    @gameConsole = GameConsole.all.order('name asc')
     haml :game_console_index
   end
 

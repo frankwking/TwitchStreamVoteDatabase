@@ -8,7 +8,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
 
   get '/game_genres/:id/?' do
     @gameGenre = GameGenre.find(params[:id])
-    @game = @gameGenre.games
+    @game = @gameGenre.games.order('name asc')
     haml :game_genre_show
   end
 
@@ -20,7 +20,7 @@ class TwitchStreamVoteDatabase < Sinatra::Base
   end
 
   get '/game_genres/?' do
-    @gameGenre = GameGenre.all
+    @gameGenre = GameGenre.all.order('name asc')
     haml :game_genre_index
   end
 
