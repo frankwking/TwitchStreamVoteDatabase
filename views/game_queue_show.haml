@@ -8,6 +8,7 @@
     - @games.each do |g|
       %li
         %a{href: "/games/#{g.id}"} #{g.name}
+        %span - Current Votes: #{g.current_votes}
         %form{action: "/game_queues/#{@gameQueue.id}/change_game", method: "post"}
           %input{type: 'hidden', name: 'game_id', value: "#{g.id}"}
           %select{name: 'game_queue_id', label: " "}
