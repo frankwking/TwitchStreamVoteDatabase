@@ -1,3 +1,4 @@
 vendor/
 .bundle/
 data.sqlite3
+data.backup
